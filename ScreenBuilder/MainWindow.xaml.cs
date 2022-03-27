@@ -130,6 +130,10 @@ namespace ScreenBuilder
             canvas.Children.Add(uiElement);
             DragCanvas.SetLeft(uiElement, left);
             DragCanvas.SetTop(uiElement, top);
+
+            var adorner = AdornerLayer.GetAdornerLayer(canvas);
+            adorner.Add(new ResizeAdorner(uiElement));
+
         }
         /// <summary>
         /// Generate random number
