@@ -33,6 +33,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
             <Label Margin ="10,0,0,0" Content="Wpf Control Toolbox" FontSize="13" FontWeight="Bold" Grid.Row="0"/>
+             <!--List box for tool box items-->
             <ListBox x:Name="lstControls"  ScrollViewer.CanContentScroll="False"
                  VerticalAlignment="Stretch"
                      Grid.Row="1"
@@ -58,7 +59,9 @@
 
             </Grid>
         </Border>
+            
         <Border  HorizontalAlignment="Stretch"  Grid.Column="1" VerticalAlignment="Stretch" BorderThickness="1" BorderBrush="Black" >
+            <!--Container for controls-->
             <container:ContainerControl AllowDrop="True" HorizontalAlignment="Stretch" x:Name="ControlContainer" ScrollViewer.VerticalScrollBarVisibility="Visible">
             </container:ContainerControl>
             

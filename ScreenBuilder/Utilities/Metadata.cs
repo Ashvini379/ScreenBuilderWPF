@@ -8,10 +8,17 @@ using System.Windows;
 
 namespace ScreenBuilder.Utilities
 {
+	//Class to store all controls properties
 	public static class Metadata
 	{
 		static Dictionary<Type, Dictionary<DependencyProperty, object>> standardPropertyValues = new Dictionary<Type, Dictionary<DependencyProperty, object>>();
 
+		/// <summary>
+		/// Add default property values
+		/// </summary>
+		/// <param name="t">type to be added</param>
+		/// <param name="p">Dependency property of type</param>
+		/// <param name="value">values to be added</param>
 		public static void AddDefaultPropertyValue(Type t, DependencyProperty p, object value)
 		{
 			lock (standardPropertyValues)
@@ -37,6 +44,11 @@ namespace ScreenBuilder.Utilities
 			}
 		}
 
+		/// <summary>
+		/// Get all dependency properties from instance of type
+		/// </summary>
+		/// <param name="type">type</param>
+		/// <returns></returns>
 		public static IEnumerable<FieldInfo> GetDependencyProperties(Type type)
 		{
 			var dependencyProperties = type.GetFields(BindingFlags.Static | BindingFlags.Public)

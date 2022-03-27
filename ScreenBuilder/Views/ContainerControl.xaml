@@ -9,7 +9,8 @@
              mc:Ignorable="d" AllowDrop="True" x:Name="Container">
     
         <ScrollViewer AllowDrop="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <controls:DragCanvas Background="AliceBlue" AllowDrop="True" x:Name="ContainerCanvas" Focusable="True" AllowDragging="True"  ScrollViewer.ScrollChanged="ContainerCanvas_ScrollChanged"   VerticalAlignment="Stretch" 
+        <!--custom canvas with drag and drop  -->
+        <controls:DragCanvas Background="AliceBlue" AllowDrop="True" x:Name="ContainerCanvas" Focusable="True" AllowDragging="True"    VerticalAlignment="Stretch" 
             HorizontalAlignment="Stretch" MinimumHeight="{Binding ElementName=Container,Path=ActualHeight}">             
             </controls:DragCanvas>
         </ScrollViewer>

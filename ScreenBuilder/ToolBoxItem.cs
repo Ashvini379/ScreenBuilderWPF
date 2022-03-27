@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ScreenBuilder
 {
+	/// <summary>
+	/// Class to create toolbox item
+	/// </summary>
 	public class ToolBoxItem
 	{
 		public Type Type { get; set; }

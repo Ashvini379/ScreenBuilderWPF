@@ -25,12 +25,6 @@ namespace ScreenBuilder.Views
 			InitializeComponent();
 		}
 
-		private void ContainerCanvas_ScrollChanged(object sender, ScrollChangedEventArgs e)
-		{
-			var canvas = sender as Canvas;
-			
-			//canvas.SetValue(ScrollViewer.VerticalScrollBarVisibilityProperty,ScrollBarVisibility.Visible);
-		}
 	}
 
 

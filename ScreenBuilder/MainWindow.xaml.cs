@@ -27,15 +27,42 @@ namespace ScreenBuilder
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+        /// <summary>
+        /// Vertical position for animation
+        /// </summary>
         private double m_VerticalDistance = 0;
+
+        /// <summary>
+        /// horizontal position for animation
+        /// </summary>
         private double m_HorizontalDistance = 0;
+
+        /// <summary>
+        /// Left of Control to be added on Container
+        /// </summary>
         private double left = 0;
+        /// <summary>
+        /// Top of Control to be added on Container
+        /// </summary>
         private double top=0;
 
+        /// <summary>
+        /// Canvas on which control to be added
+        /// </summary>
         private DragCanvas canvas;
+        /// <summary>
+        /// Random number for animation transform
+        /// </summary>
         private static readonly Random random = new Random();
+
+        /// <summary>
+        /// lock to generate random number
+        /// </summary>
         private static readonly object syncLock = new object();
         
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainWindow()
 		{
 			InitializeComponent();
@@ -45,6 +72,11 @@ namespace ScreenBuilder
             canvas = (DragCanvas)ControlContainer.FindName("ContainerCanvas");           
         }
 
+        /// <summary>
+        /// Tool box item selection change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstControls_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			var toolboxitem = e.AddedItems[0] as ToolBoxItem;
@@ -99,6 +131,12 @@ namespace ScreenBuilder
             DragCanvas.SetLeft(uiElement, left);
             DragCanvas.SetTop(uiElement, top);
         }
+        /// <summary>
+        /// Generate random number
+        /// </summary>
+        /// <param name="min">min value</param>
+        /// <param name="max"> max value</param>
+        /// <returns></returns>
         public static int RandomNumber(int min, int max)
         {
             lock (syncLock)

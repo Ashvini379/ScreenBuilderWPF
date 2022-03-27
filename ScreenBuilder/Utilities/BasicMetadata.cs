@@ -12,7 +12,9 @@ namespace ScreenBuilder.Utilities
 {
 	public static class BasicMetadata
 	{
-
+        /// <summary>
+        /// Get All Controls Basic Properties
+        /// </summary>
         public static void Register()
         {
             GetButtonProperties(typeof(Button));
@@ -68,6 +70,7 @@ namespace ScreenBuilder.Utilities
             Metadata.AddPopularControl(typeof(Path));
         }
 
+        //Get Border Control Properties
         private static void GetBorderProperties(Type type)
         {
             Metadata.AddDefaultPropertyValue(type, Border.BorderThicknessProperty, new Thickness(1));
