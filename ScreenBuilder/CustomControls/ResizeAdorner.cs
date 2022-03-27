@@ -87,8 +87,9 @@ namespace ScreenBuilder.CustomControls
                 ResizeHeight(vert);
                 dragStarted = false;
                 e.Handled = true;
-            };
+            };          
         }
+       
         public void CreateThumbPart(ref Thumb cornerThumb)
         {
             cornerThumb = new Thumb { Width = 10, Height = 10, Background = Brushes.Black };

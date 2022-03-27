@@ -132,6 +132,7 @@ namespace ScreenBuilder
             DragCanvas.SetTop(uiElement, top);
 
             var adorner = AdornerLayer.GetAdornerLayer(canvas);
+            adorner.Name = "canvasadorner";
             adorner.Add(new ResizeAdorner(uiElement));
 
         }

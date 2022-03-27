@@ -11,7 +11,7 @@
         <ScrollViewer AllowDrop="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <!--custom canvas with drag and drop  -->
         <controls:DragCanvas Background="AliceBlue" AllowDrop="True" x:Name="ContainerCanvas" Focusable="True" AllowDragging="True"    VerticalAlignment="Stretch" 
-            HorizontalAlignment="Stretch" MinimumHeight="{Binding ElementName=Container,Path=ActualHeight}">             
+            HorizontalAlignment="Stretch" MinimumHeight="{Binding ElementName=Container,Path=ActualHeight}"  MinimumWidth="{Binding ElementName=Container,Path=ActualWidth}">             
             </controls:DragCanvas>
         </ScrollViewer>
 </UserControl>

@@ -535,19 +535,23 @@ namespace ScreenBuilder.CustomControls
 			#endregion // Update Z-Indici
 		}
 
-		#endregion // UpdateZOrder
-		protected override Size MeasureOverride(Size constraint)
+        #endregion // UpdateZOrder
+
+        #region MeasureOverride
+        protected override Size MeasureOverride(Size constraint)
 		{
 			base.MeasureOverride(constraint);
 			var desiredSize = new Size(MinimumWidth, MinimumHeight);
 			foreach (UIElement child in Children)
 			{
 				desiredSize = new Size(
-					Math.Max(desiredSize.Width, GetLeft(child) + child.DesiredSize.Width),
-					Math.Max(desiredSize.Height, GetTop(child) + child.DesiredSize.Height));
+					Math.Max(desiredSize.Width, GetLeft(child) + child.DesiredSize.Width+200),
+					Math.Max(desiredSize.Height, GetTop(child) + child.DesiredSize.Height+200));
 			}
-			                              return desiredSize;
+			
+			return desiredSize;
 		}
+		#endregion
 		#endregion // Private Helpers
 	}
 }
