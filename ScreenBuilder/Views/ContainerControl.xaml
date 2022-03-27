@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="ScreenBuilder.Views.ContainerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScreenBuilder"
+             xmlns:controls="clr-namespace:ScreenBuilder.CustomControls"
+             
+             mc:Ignorable="d" AllowDrop="True" x:Name="Container">
+    
+        <ScrollViewer AllowDrop="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <controls:DragCanvas Background="AliceBlue" AllowDrop="True" x:Name="ContainerCanvas" Focusable="True" AllowDragging="True"  ScrollViewer.ScrollChanged="ContainerCanvas_ScrollChanged"   VerticalAlignment="Stretch" 
+            HorizontalAlignment="Stretch" MinimumHeight="{Binding ElementName=Container,Path=ActualHeight}">             
+            </controls:DragCanvas>
+        </ScrollViewer>
+</UserControl>

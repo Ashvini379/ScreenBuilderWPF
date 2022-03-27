@@ -1,0 +1,68 @@
+﻿<Window x:Class="ScreenBuilderMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScreenBuilderMVVM"
+        xmlns:models="clr-namespace:ScreenBuilderMVVM.Models"        
+        xmlns:container="clr-namespace:ScreenBuilderMVVM.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="toolBoxItems" Type="models:ToolBoxItem">
+                <models:ToolBoxItem Type="{x:Type Button}"  />
+                <models:ToolBoxItem Type="{x:Type TextBlock}" />
+                <models:ToolBoxItem Type="{x:Type TextBox}" />
+                <models:ToolBoxItem Type="{x:Type ComboBox}"/>
+                <models:ToolBoxItem Type="{x:Type ListBox}" />
+                <models:ToolBoxItem Type="{x:Type Line}"/>
+                <models:ToolBoxItem Type="{x:Type Rectangle}"/>
+                <models:ToolBoxItem Type="{x:Type CheckBox}"/>
+            </x:Array>           
+        </ResourceDictionary>
+    </Window.Resources>    
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>       
+        <Border  HorizontalAlignment="Stretch" Grid.Column="0" VerticalAlignment="Stretch" BorderThickness="1" BorderBrush="Black" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            <Label Margin ="10,0,0,0" Content="Wpf Control Toolbox" FontSize="13" FontWeight="Bold" Grid.Row="0"/>
+            <ListBox x:Name="lstControls" ItemsSource="{Binding Controls}" ScrollViewer.CanContentScroll="False"
+                 VerticalAlignment="Stretch"
+                     Grid.Row="1"
+                SelectedItem="{Binding SelectedControl}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch" SelectionChanged="lstControls_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>                     
+                            <Viewbox Height="20" Width="90"                                
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Bottom"
+                                 DockPanel.Dock="Bottom"  Grid.Column="1">
+                           
+                                <TextBlock HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom"
+                                       Text="{Binding Name}"
+                                       TextAlignment="Center" 
+                                         />                         
+                        </Viewbox> 
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            </Grid>
+        </Border>
+        <Border  HorizontalAlignment="Stretch"  Grid.Column="1" VerticalAlignment="Stretch" BorderThickness="1" BorderBrush="Black" >
+            <container:ContainerControl AllowDrop="True" HorizontalAlignment="Stretch" x:Name="ControlContainer" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            </container:ContainerControl>
+            
+        </Border>
+       
+    </Grid>
+</Window>
