@@ -101,6 +101,10 @@ namespace ScreenBuilderMVVM
             canvas.Children.Add(uiElement);
             DragCanvas.SetLeft(uiElement, left);
             DragCanvas.SetTop(uiElement, top);
+
+
+            var adorner = AdornerLayer.GetAdornerLayer(canvas);
+            adorner.Add(new ResizeAdorner(uiElement));
         }
         public static int RandomNumber(int min, int max)
         {
