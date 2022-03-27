@@ -1,12 +1,12 @@
 # ScreenBuilderWPF
 This repo contains the samples that demonstrate the Screen Builder Application similar to visual studio toolbox and container developed in Windows Presentation Foundation in the .NET for Desktop. 
 This is developed using .Net 5.
-Prerquisites:
+#Built with:
 1. Visual Studio 2019(.Net 5)
 2. Windows Presentation Foundation
 
 
-Requirement:
+#Requirement:
 
 Layout of the designer
 
