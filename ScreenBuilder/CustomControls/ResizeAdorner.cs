@@ -27,6 +27,7 @@ namespace ScreenBuilder.CustomControls
             visualChilderns = new VisualCollection(this);
             childElement = element;
             CreateThumbPart(ref leftTop);
+           
             leftTop.DragDelta += (sender, e) =>
             {
                 double hor = e.HorizontalChange;
@@ -40,6 +41,13 @@ namespace ScreenBuilder.CustomControls
                 ResizeY(vert);
                 dragStarted = false;
                 e.Handled = true;
+            };
+
+
+            leftTop.DragCompleted += (sender, e) =>
+            {
+                AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(childElement);
+                adornerLayer.Remove(this);
             };
             CreateThumbPart(ref rightTop);
             rightTop.DragDelta += (sender, e) =>
@@ -57,6 +65,13 @@ namespace ScreenBuilder.CustomControls
                 dragStarted = false;
                 e.Handled = true;
             };
+
+            rightTop.DragCompleted += (sender, e) =>
+            {
+                AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(childElement);
+                adornerLayer.Remove(this);
+            };
+
             CreateThumbPart(ref leftBottom);
             leftBottom.DragDelta += (sender, e) =>
             {
@@ -73,6 +88,13 @@ namespace ScreenBuilder.CustomControls
                 dragStarted = false;
                 e.Handled = true;
             };
+
+            leftBottom.DragCompleted += (sender, e) =>
+            {
+                AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(childElement);
+                adornerLayer.Remove(this);
+            };
+
             CreateThumbPart(ref rightBottom);
             rightBottom.DragDelta += (sender, e) =>
             {
@@ -87,7 +109,13 @@ namespace ScreenBuilder.CustomControls
                 ResizeHeight(vert);
                 dragStarted = false;
                 e.Handled = true;
-            };          
+            };
+
+            rightBottom.DragCompleted += (sender, e) =>
+            {
+                AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(childElement);
+                adornerLayer.Remove(this);
+            };
         }
        
         public void CreateThumbPart(ref Thumb cornerThumb)
