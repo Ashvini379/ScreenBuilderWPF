@@ -59,7 +59,12 @@ namespace ScreenBuilder
         /// lock to generate random number
         /// </summary>
         private static readonly object syncLock = new object();
-        
+
+
+        private readonly Dictionary<UIElement, List<Adorner>> _controlToAdornersMap;
+
+
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -69,7 +74,8 @@ namespace ScreenBuilder
             BasicMetadata.Register();
             m_VerticalDistance = 0;
             m_HorizontalDistance = 5.0;
-            canvas = (DragCanvas)ControlContainer.FindName("ContainerCanvas");           
+            canvas = (DragCanvas)ControlContainer.FindName("ContainerCanvas");
+            _controlToAdornersMap = new Dictionary<UIElement, List<Adorner>>();
         }
 
         /// <summary>
@@ -131,12 +137,52 @@ namespace ScreenBuilder
             DragCanvas.SetLeft(uiElement, left);
             DragCanvas.SetTop(uiElement, top);
 
-            var adorner = AdornerLayer.GetAdornerLayer(canvas);
-            adorner.Add(new ResizeAdorner(uiElement));
+            
 
+            //uiElement.MouseLeave += OnMyControlMouseEnterOrLeave;
+            AddAdorners(uiElement);
+            //var adorner = AdornerLayer.GetAdornerLayer(canvas);
+            //adorner.Add(new ResizeAdorner(uiElement));
+
+            uiElement.MouseEnter += (sender, e) =>
+            {
+                AdornerLayer.GetAdornerLayer(uiElement).Visibility = Visibility.Visible;
+            };
         }
 
+        private void AddAdorners(UIElement control)
+        {
+            var myAdorner = new ResizeAdorner(control);
+           
+            var adornerLayer = AdornerLayer.GetAdornerLayer(control);
+            adornerLayer.Add(myAdorner);
 
+            _controlToAdornersMap[control] = new List<Adorner> { myAdorner };
+        }
+
+        
+
+        private void OnMyAdornerMouseEnterOrLeave(object sender, MouseEventArgs e)
+        {
+            var adorner = (Adorner)sender;
+            HitTestAndSetAdornersVisibility((UIElement)adorner.AdornedElement, e);
+        }
+
+        private void HitTestAndSetAdornersVisibility(UIElement control, MouseEventArgs e)
+        {
+            var adorners = _controlToAdornersMap[control];
+            var hitTestSubjects = new List<UIElement> { control }.Concat(adorners);
+            var hit = hitTestSubjects.Any(i => VisualTreeHelper.HitTest(i, e.GetPosition(i)) != null);
+
+            SetAdornersVisibility(adorners, hit ? Visibility.Visible : Visibility.Collapsed);
+        }
+
+        private static void SetAdornersVisibility(IEnumerable<Adorner> adorners, Visibility visibility)
+        {
+            if (adorners != null)
+                foreach (var adorner in adorners)
+                    adorner.Visibility = visibility;
+        }
         /// <summary>
         /// Generate random number
         /// </summary>

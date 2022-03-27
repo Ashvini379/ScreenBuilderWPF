@@ -46,8 +46,7 @@ namespace ScreenBuilder.CustomControls
 
             leftTop.DragCompleted += (sender, e) =>
             {
-                AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(childElement);
-                adornerLayer.Remove(this);
+                AdornerLayer.GetAdornerLayer(childElement).Visibility = Visibility.Hidden;
             };
             CreateThumbPart(ref rightTop);
             rightTop.DragDelta += (sender, e) =>
@@ -68,8 +67,7 @@ namespace ScreenBuilder.CustomControls
 
             rightTop.DragCompleted += (sender, e) =>
             {
-                AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(childElement);
-                adornerLayer.Remove(this);
+                AdornerLayer.GetAdornerLayer(childElement).Visibility = Visibility.Hidden;
             };
 
             CreateThumbPart(ref leftBottom);
@@ -91,8 +89,7 @@ namespace ScreenBuilder.CustomControls
 
             leftBottom.DragCompleted += (sender, e) =>
             {
-                AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(childElement);
-                adornerLayer.Remove(this);
+                AdornerLayer.GetAdornerLayer(childElement).Visibility = Visibility.Hidden;
             };
 
             CreateThumbPart(ref rightBottom);
@@ -113,8 +110,7 @@ namespace ScreenBuilder.CustomControls
 
             rightBottom.DragCompleted += (sender, e) =>
             {
-                AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(childElement);
-                adornerLayer.Remove(this);
+                AdornerLayer.GetAdornerLayer(childElement).Visibility = Visibility.Hidden;
             };
         }
        
